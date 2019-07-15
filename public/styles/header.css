@@ -1,14 +1,14 @@
 header {
-  height: 400px;
+  height: 520px;
   width: 100%;
-  margin-top: 120px;
+  /* margin-top: 120px; */
   background-image: url('../images/bg-blue-strips.png');
 }
 
 header div img{
   display: block;
   margin: auto;
-  padding-top: 20px;
+  padding-top: 120px;
 }
 
 header div h2 {
