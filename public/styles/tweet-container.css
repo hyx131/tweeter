@@ -9,14 +9,14 @@
 .tweets header img {
   float: left;
   padding-right: 10px;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .name {
   float: left;
   margin: 20px 0 20px 0;
   font-weight: normal;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .userName {
@@ -30,7 +30,7 @@
   margin-top: 85px;
   padding: 20px 10px 10px 10px;
   font-weight: normal;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .tweets footer hr {
@@ -42,7 +42,7 @@
   font-size: 15px;
   padding: 0 0 0 10px;
   font-weight: normal;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .tweets footer .icons {
