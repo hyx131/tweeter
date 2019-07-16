@@ -27,7 +27,7 @@ const tweetData = [
     },
     "created_at": 1461113959088
   }
-]
+];
 
 
 const createTweetElement = function(tweet) {
@@ -68,7 +68,7 @@ const createTweetElement = function(tweet) {
   <img src='/images/favorite.png'>
   </div>
   </footer>
-  </article> `
+  </article> `;
   
   return $tweet;
 };
@@ -79,7 +79,8 @@ const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     $('.container').append(createTweetElement(tweet));
   }
-}
+};
+
 
 // wrap in 'document.ready' for the tweet sections to render properly:
 $(document).ready(function() {
