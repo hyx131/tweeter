@@ -35,8 +35,12 @@
   background-color: blanchedalmond;
 }
 
-.new-tweet .counter {
+.counter {
   float: right;
   color:#1A568F;
   font-family: 'Bungee', cursive, sans-serif;
+}
+
+.red-color {
+  color: red;
 }
