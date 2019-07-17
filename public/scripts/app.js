@@ -64,16 +64,22 @@ const renderTweets = function(tweets) {
 $(document).ready(function() {
   $('#compose-tweet').submit(function(event) {
     event.preventDefault();
-    
-    $.ajax('/tweets', {
-      method: 'POST',
-      data: $(this).serialize()
-    })
-    .then(function(data) {
-      $('textarea').val(''); //REMINDER: empty out the textarea and reset the counter once the data has been successfully sent to server
-      $('.counter').text(140);
-      loadtweets(renderTweets); //REMINDER: call GET funtion here to render the page view
-    })
+
+    if(($('textarea').val()).length === 0) {
+      alert(`Cannot tweet an empty hum!`);
+    } else if (($('textarea').val()).length > 140) {
+      alert(`Too long of a hhhhuuummmmmm!`);
+    } else {
+      $.ajax('/tweets', {
+        method: 'POST',
+        data: $(this).serialize()
+      })
+      .then(function(data) {
+        $('textarea').val(''); //REMINDER: empty out the textarea and reset the counter once the data has been successfully sent to server
+        $('.counter').text(140);
+        loadtweets(renderTweets); //REMINDER: call GET funtion here to render the page view
+      })
+    }
     
   });
 });
