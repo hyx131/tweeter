@@ -74,15 +74,18 @@ $(document).ready(function() {
     event.preventDefault();
 
     if(($('textarea').val()).length === 0) {
-      alert(`Cannot tweet an empty hum!`);
+      $('.alert p').replaceWith(`<p>Cannot tweet an empty hum!</p>`)
+      $('.alert').slideDown();
     } else if (($('textarea').val()).length > 140) {
-      alert(`Too long of a hhhhuuummmmmm!`);
+      $('.alert p').replaceWith(`<p>Too long of a hhhhuuummmmmm!</p>`)
+      $('.alert').slideDown();
     } else {
       $.ajax('/tweets', {
         method: 'POST',
         data: $(this).serialize()
       })
       .then(function(data) {
+        $('.alert').slideUp();
         $('textarea').val(''); //REMINDER: empty out the textarea and reset the counter once the data has been successfully sent to server
         $('.counter').text(140);
         loadtweets(renderTweets); //REMINDER: call GET funtion here to render the page view
