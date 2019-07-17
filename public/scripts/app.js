@@ -86,3 +86,26 @@ const renderTweets = function(tweets) {
 $(document).ready(function() {
   renderTweets(tweetData);
 });
+
+
+
+
+/************* Form Submission Using JQuery *************/
+
+$(document).ready(function() {
+  $('#composeTweet').submit(function(event) {
+    event.preventDefault();
+    
+    $.ajax('/tweets', {
+      method: 'POST',
+      data: $(this).serialize()
+    })
+    .then(function(data) {
+      console.log('post submitted');
+    })
+
+  });
+});
+
+
+
