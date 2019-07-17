@@ -85,3 +85,16 @@
   opacity: 0.85;
 }
 
+
+
+/************************ Back To Top Button ************************/
+
+.to-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.to-top:hover {
+  cursor: pointer;
+}
