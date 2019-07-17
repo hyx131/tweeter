@@ -4,6 +4,14 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// function to escape XSS:
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+
 
 const createTweetElement = function(tweet) {
 
@@ -31,7 +39,7 @@ const createTweetElement = function(tweet) {
   </header>
   
   <section class='tweet-text'>
-  <p>${tweet.content.text}</p>
+  <p>${escape(tweet.content.text)}</p>
   </section>
   
   <footer>
