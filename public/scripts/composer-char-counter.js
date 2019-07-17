@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('#textarea').on("keyup", function() {
+  $('textarea').on("keyup", function() {
     let textLimit = 140;
     let remainingChar = textLimit - ($(this).val()).length;
     let counter = $(this).siblings('.counter');

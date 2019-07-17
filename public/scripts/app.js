@@ -4,31 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const tweetData = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
 
 const createTweetElement = function(tweet) {
 
@@ -77,15 +52,9 @@ const createTweetElement = function(tweet) {
 // appending each new tweet-html-article to the main section:
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
-    $('.container').append(createTweetElement(tweet));
+    $('.post-list').prepend(createTweetElement(tweet));
   }
 };
-
-
-// wrap in 'document.ready' for the tweet sections to render properly:
-$(document).ready(function() {
-  renderTweets(tweetData);
-});
 
 
 
@@ -93,7 +62,7 @@ $(document).ready(function() {
 /************* Form Submission Using JQuery *************/
 
 $(document).ready(function() {
-  $('#composeTweet').submit(function(event) {
+  $('#compose-tweet').submit(function(event) {
     event.preventDefault();
     
     $.ajax('/tweets', {
@@ -101,11 +70,30 @@ $(document).ready(function() {
       data: $(this).serialize()
     })
     .then(function(data) {
-      console.log('post submitted');
+      $('textarea').val(''); //REMINDER: empty out the textarea and reset the counter once the data has been successfully sent to server
+      $('.counter').text(140);
+      loadtweets(renderTweets); //REMINDER: call GET funtion here to render the page view
     })
-
+    
   });
 });
 
 
 
+/************* Get Request Using Ajax & JQuery *************/
+
+const loadtweets = function(cb) {
+  $(document).ready(function() {
+    $.ajax('/tweets', {
+      method: 'GET'
+    })
+    .then(function(data) {
+      $('.post-list').html(''); //REMINDER: empty out the tweet container after successfull GET of the data, but before rendering the data bacause data in this case includes the entire tweet history, not emptying it out will cause replications of posts on the page
+      cb(data);
+    })
+  })
+};
+
+$(document).ready(function() {
+  loadtweets(renderTweets);
+});
