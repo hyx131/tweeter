@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   $('.arrow-img').click(function() {
     $('.new-tweet').slideToggle();
+    $('textarea').focus();
   });
 
   $('.alert').hide();
@@ -24,6 +25,7 @@ $(document).ready(function() {
   $('.to-top').click(function() {
     $("html, body").animate({scrollTop: 0 }, 1000);
     $('.new-tweet').slideDown();
+    $('textarea').focus();
   });
 
 });
