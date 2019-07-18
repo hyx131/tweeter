@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+
 // function to escape XSS:
 const escape =  function(str) {
   let div = document.createElement('div');
@@ -19,14 +21,26 @@ const createTweetElement = function(tweet) {
   let timeStamp;
   let timeToday = new Date();
   let timeCreated = tweet.created_at;
-  let tweetAge = (Math.floor(timeToday - timeCreated) / 1000 / 60 / 60 / 24);
+  let tweetSeconds = (Math.floor((timeToday - timeCreated) / 1000));
+  let tweetMinute = (Math.floor((timeToday - timeCreated) / 1000 / 60));
+  let tweetHour = (Math.floor((timeToday - timeCreated) / 1000 / 60 / 60));
+  let tweetAge = (Math.floor((timeToday - timeCreated) / 1000 / 60 / 60 / 24));
+  console.log(tweetSeconds);
 
   if (tweetAge > 365 && tweetAge % 365 !== 0) {
     timeStamp = `${(tweetAge / 365).toFixed(0)} years ${(tweetAge % 365).toFixed(0)} days ago`;
   } else if (tweetAge > 365 && tweetAge % 365 === 0) {
     timeStamp = `${(tweetAge / 365).toFixed(0)} years ago`;
   } else {
-    timeStamp = `${(tweetAge).toFixed(0)} days ago`;
+    if (tweetAge < 1 && tweetHour > 0) {
+      timeStamp = `${(tweetHour).toFixed(0)} hours ago`;
+    } else if (tweetHour < 1 && tweetMinute > 0) {
+      timeStamp = `${(tweetMinute).toFixed(0)} minutes ago`;
+    } else if (tweetMinute < 1 && tweetSeconds >= 0) {
+      timeStamp = `${(tweetSeconds).toFixed(0)} seconds ago`;
+    } else {
+      timeStamp = `${(tweetAge).toFixed(0)} days ago`;
+    }
   }
 
   // creating the new article template:
@@ -73,11 +87,12 @@ $(document).ready(function() {
   $('#compose-tweet').submit(function(event) {
     event.preventDefault();
 
-    if(($('textarea').val()).length === 0) {
-      $('.alert p').replaceWith(`<p>Cannot tweet an empty hum!</p>`)
+    // form validation error pop-ups:
+    if (($('textarea').val()).length === 0) {
+      $('.alert p').replaceWith(`<p>Cannot tweet an empty hum!</p>`);
       $('.alert').slideDown();
     } else if (($('textarea').val()).length > 140) {
-      $('.alert p').replaceWith(`<p>Too long of a hhhhuuummmmmm!</p>`)
+      $('.alert p').replaceWith(`<p>Too long of a hhhhuuummmmmm!</p>`);
       $('.alert').slideDown();
     } else {
       $.ajax('/tweets', {
@@ -88,8 +103,8 @@ $(document).ready(function() {
         $('.alert').slideUp();
         $('textarea').val(''); //REMINDER: empty out the textarea and reset the counter once the data has been successfully sent to server
         $('.counter').text(140);
-        loadtweets(renderTweets); //REMINDER: call GET funtion here to render the page view
-      })
+        loadtweets(renderTweets); //REMINDER: call GET funtion here to render the page view with updated message data
+      });
     }
     
   });
@@ -107,8 +122,8 @@ const loadtweets = function(cb) {
     .then(function(data) {
       $('.post-list').html(''); //REMINDER: empty out the tweet container after successfull GET of the data, but before rendering the data bacause data in this case includes the entire tweet history, not emptying it out will cause replications of posts on the page
       cb(data);
-    })
-  })
+    });
+  });
 };
 
 $(document).ready(function() {
