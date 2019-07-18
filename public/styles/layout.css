@@ -30,3 +30,28 @@ body {
   margin: auto;
   color: #545149;
 }
+
+
+/********************** Responsive CSS Design **********************/
+
+@media (min-width: 1024px) {
+
+  body {
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    margin: auto;
+  }
+
+  .header {
+    flex-basis: 50%;
+    margin: 290px 60px auto 40px;
+    max-width: 800px;
+  }
+
+  .container {
+    margin: 200px 40px auto 60px;
+    max-width: 1200px;
+  }
+
+}
