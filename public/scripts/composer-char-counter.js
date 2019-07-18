@@ -10,6 +10,6 @@ $(document).ready(function() {
     } else {
       counter.html(remainingChar).removeClass('red-color');
     }
-  })
+  });
 
 });
