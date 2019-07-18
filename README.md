@@ -16,6 +16,14 @@ This application is AJAX-based and was built using jQuery, HTML5, CSS, Javascrip
 
 !["Back-to-top button appears when scroll past compose tweet section."](https://github.com/hyx131/tweeter/blob/master/public/docs/return-top.png?raw=true)
 
+## Screencasts 
+
+!["Home page."](https://github.com/hyx131/tweeter/blob/master/public/docs/homepage-screencast.gif?raw=true)
+!["Scroll to top."](https://github.com/hyx131/tweeter/blob/master/public/docs/totop-screencast.gif?raw=true)
+!["Empty tweet alert."](https://github.com/hyx131/tweeter/blob/master/public/docs/emptyalert-screencast.gif?raw=true)
+!["Compose tweet."](https://github.com/hyx131/tweeter/blob/master/public/docs/posting-screencast.gif?raw=true)
+
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
