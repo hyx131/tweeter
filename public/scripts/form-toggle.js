@@ -1,10 +1,13 @@
 $(document).ready(function() {
 
+  $('.new-tweet').hide();
+
   $('.arrow-img').click(function() {
     $('.new-tweet').slideToggle();
   });
 
   $('.alert').hide();
+
 
 
 
