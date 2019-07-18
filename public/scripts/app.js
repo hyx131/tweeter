@@ -25,7 +25,6 @@ const createTweetElement = function(tweet) {
   let tweetMinute = (Math.floor((timeToday - timeCreated) / 1000 / 60));
   let tweetHour = (Math.floor((timeToday - timeCreated) / 1000 / 60 / 60));
   let tweetAge = (Math.floor((timeToday - timeCreated) / 1000 / 60 / 60 / 24));
-  console.log(tweetSeconds);
 
   if (tweetAge > 365 && tweetAge % 365 !== 0) {
     timeStamp = `${(tweetAge / 365).toFixed(0)} years ${(tweetAge % 365).toFixed(0)} days ago`;
