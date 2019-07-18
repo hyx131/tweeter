@@ -1,15 +1,17 @@
 $(document).ready(function() {
 
+  /**************** Hide Create-Tweet && Alert Section Upon Page Load ***************/
+
   $('.new-tweet').hide();
+  $('.alert').hide();
+
+
+  /**************** First Toggle: Show/hide Create-Tweet Button ***************/
 
   $('.arrow-img').click(function() {
     $('.new-tweet').slideToggle();
     $('textarea').focus();
   });
-
-  $('.alert').hide();
-
-
 
 
   /**************** Second Toggle: To Top Button ***************/
